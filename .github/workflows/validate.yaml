@@ -13,6 +13,9 @@ jobs:
   validate:
     name: Validate with HACS Action
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      administration: write
     steps:
       - uses: actions/checkout@v4
       - name: Set repository topics
