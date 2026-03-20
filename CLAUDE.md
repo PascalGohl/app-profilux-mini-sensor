@@ -14,18 +14,28 @@ Config for the test device:
 ## Repository layout
 
 ```
-manifest.json     # integration metadata, dependencies
-config_flow.py    # UI config flow — calls fetch_readings() from sensor.py for validation
-sensor.py         # SWMBus protocol + fetch_readings() + TemperatureSensor/PhSensor entities
-const.py          # shared constants (DOMAIN, scan interval, …)
-strings.json      # UI strings
-translations/
-  en.json
-scraper.py        # dev/debug CLI — imports fetch_readings() from sensor.py
+hacs.json         # HACS publishing metadata
+README.md         # integration documentation (rendered by HACS)
+LICENSE           # MIT license
+custom_components/
+  profilux_mini/
+    manifest.json     # integration metadata, dependencies
+    __init__.py       # HA entry point (setup/unload)
+    config_flow.py    # UI config flow — calls fetch_readings() from sensor.py for validation
+    sensor.py         # SWMBus protocol + fetch_readings() + TemperatureSensor/PhSensor entities
+    const.py          # shared constants (DOMAIN, scan interval, …)
+    strings.json      # UI strings
+    translations/
+      en.json
+.github/
+  workflows/
+    validate.yaml     # HACS validation action
+    hassfest.yaml     # Home Assistant hassfest validation action
+scraper.py        # dev/debug CLI — imports sensor.py directly (not part of HA integration)
 requirements.txt
 ```
 
-All integration files live at the repo root. To deploy, copy all files except `scraper.py` and `requirements.txt` into `config/custom_components/profilux_mini/` on the Home Assistant host.
+Integration files live in `custom_components/profilux_mini/`. To deploy manually, copy that directory into `config/custom_components/` on the Home Assistant host.
 
 ## Installation
 
