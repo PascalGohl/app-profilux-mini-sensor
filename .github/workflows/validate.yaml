@@ -19,9 +19,5 @@ jobs:
         uses: hacs/action@main
         with:
           category: integration
-          # Topics (home-assistant, homeassistant, hacs, hacs-integration) must be set
-          # manually in the repository Settings → About section, as GITHUB_TOKEN cannot
-          # write repository metadata. Remove this ignore line after setting topics.
-          ignore: topics
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
