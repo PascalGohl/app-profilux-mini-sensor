@@ -6,11 +6,6 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 Build a Home Assistant custom integration for the GHL ProfiLux mini aquarium controller. The integration reads temperature and pH sensor values from the controller over WebSocket (SWMBus protocol) and exposes them as native Home Assistant sensor entities.
 
-Config for the test device:
-- address: `10.1.1.178`
-- username: `admin`
-- password: `Starfish`
-
 ## Repository layout
 
 ```

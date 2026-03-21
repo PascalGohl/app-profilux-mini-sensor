@@ -2,7 +2,7 @@
 
 [![HACS Custom](https://img.shields.io/badge/HACS-Custom-orange.svg)](https://hacs.xyz)
 
-A Home Assistant custom integration for the **GHL ProfiLux mini** aquarium controller. Reads temperature and pH sensor values from the controller over WebSocket (SWMBus protocol) and exposes them as native Home Assistant sensor entities.
+A Home Assistant custom integration for the **GHL ProfiLux mini** aquarium controller. Reads temperature and pH sensor values from the controller over WebSocket and exposes them as native Home Assistant sensor entities.
 
 ## Features
 
@@ -22,7 +22,7 @@ A Home Assistant custom integration for the **GHL ProfiLux mini** aquarium contr
 
 - Home Assistant 2023.1 or newer
 - GHL ProfiLux mini controller accessible on the local network
-- Controller must have WebSocket (SWMBus) interface enabled
+- Controller must have WebSocket interface enabled
 
 ## Installation
 
