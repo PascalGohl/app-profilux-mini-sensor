@@ -41,6 +41,40 @@ Integration files live in `custom_components/profilux_mini/`. To deploy manually
 
 Copy `custom_components/profilux_mini/` into the Home Assistant `config/custom_components/` directory and restart HA. Then add the integration via **Settings → Devices & Services → Add Integration → ProfiLux Mini**.
 
+## CI / GitHub Actions
+
+Two validation workflows run on every push to `main`, on pull requests, on a daily schedule, and on manual dispatch.
+
+| Workflow | File | What it checks |
+|----------|------|----------------|
+| **HACS Validation** | `.github/workflows/validate.yaml` | Integration structure meets [HACS](https://hacs.xyz/) requirements (`hacs/action@main`, category `integration`). Validates `hacs.json`, repo layout, and `manifest.json` fields. |
+| **Hassfest** | `.github/workflows/hassfest.yaml` | Integration metadata is valid per Home Assistant standards (`home-assistant/actions/hassfest@master`). Checks `manifest.json`, `strings.json`, `translations/`, and required keys like `domain`, `version`, `config_flow`. |
+
+### Common failure causes
+
+- **manifest.json** — missing or invalid fields (`domain`, `version`, `requirements`, `codeowners`, `iot_class`). Both workflows validate this file.
+- **hacs.json** — must exist at repo root with valid `name` and optional `render_readme`.
+- **strings.json / translations/en.json** — must stay in sync; hassfest validates translation structure.
+- **Repository structure** — integration files must live under `custom_components/<domain>/`.
+
+### Testing edits
+
+After any change to integration files, push the branch and verify that both GitHub Actions workflows pass. Use the GitHub CLI to check workflow status:
+
+```bash
+# Check status of the latest workflow runs on the current branch
+gh run list --branch <branch-name> --limit 4
+# View details of a specific run
+gh run view <run-id>
+```
+
+If a workflow fails, inspect the logs with `gh run view <run-id> --log-failed` and fix the issue before proceeding.
+
+### Notes
+
+- There are **no unit tests or linting** configured. CI only performs structural/metadata validation.
+- Both workflows require `GITHUB_TOKEN` (provided automatically by GitHub Actions).
+
 ## Entities
 
 | Entity | Unit | Device class |
