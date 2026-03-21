@@ -107,3 +107,7 @@ Response has the same structure, with data nibbles (nibble | 0x30) inserted betw
 
 - **Temperature** (`SENSORTYPE_TEMP=1`): raw ÷ 10 → °C (e.g. 246 → 24.6)
 - **pH** (`SENSORTYPE_PH=2`): raw ÷ 100 → pH (e.g. 652 → 6.52)
+
+## Tooling Rules
+
+- Never use the `gh` CLI. Use git with the GitHub MCP for any GitHub operations.
